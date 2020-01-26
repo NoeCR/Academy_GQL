@@ -1,0 +1,49 @@
+type Query {
+    "List of student"
+    students: [Student!]!
+    "Student data selected by ID"
+    student(id: ID!): Student!
+    "Courses list"
+    courses: [Course!]!
+    "Course data selected by ID"
+    course(id: ID!): Course!
+}
+
+"Information about students"
+type Student {
+    "Identifier of student"
+    id: ID!
+    name: String!
+    email: String!
+    website: String
+    courses: [Course!]!
+}
+
+type Course {
+    id: ID!
+    title: String!
+    description: String!
+    classes: Int!
+    time: Float!
+    logo: String!
+    level: Level!
+    path: String!
+    teacher: String!
+    students: [Student]
+    reviews: [Review!]! 
+}
+
+enum Level {
+    ALL
+    BEGINERS
+    MEDIUM
+    EXPERT
+    HERO
+}
+
+type Review {
+    id: ID!
+    name: String!
+    points: Float!
+    comment: String
+}
